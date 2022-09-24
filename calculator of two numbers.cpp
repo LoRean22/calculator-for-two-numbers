@@ -55,6 +55,7 @@ public:
         {
             if (number2 != 0) {
                 num2 = number2;
+                //либо this->num2=num2;
                 return true;
             }
 
