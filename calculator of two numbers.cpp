@@ -4,10 +4,11 @@ using namespace std;
 
 class Calculator
 {
-public:
+private:
     double num1;
     double num2;
 
+public:
     double add(double num1, double num2)
     {
         return num1 + num2;
@@ -16,48 +17,52 @@ public:
     double multiply(double num1, double num2)
     {
         return num1 * num2;
-        cout << "num1 * num2 = ";
     }
 
     double subtract_1_2(double num1, double num2)
     {
         return num1 - num2;
-        cout << "num1 - num2 = ";
     }
 
     double subtract_2_1(double num1, double num2)
     {
         return num2 - num1;
-        cout << "num2 - num1 = ";
     }
 
     double divide_1_2(double num1, double num2)
     {
         return num1 / num2;
-        cout << "num1 / num2 = ";
     }
 
     double divide_2_1(double num1, double num2)
     {
         return num2 / num1;
-        cout << "num2 / num1 = ";
     }
 
-    bool set_num1(double num1)
+    bool set_num1(double number1) 
     {
-        if (num1 != 0)
-        {
-            return num1 = num1;
+        if (number1 != 0) {
+            num1 = number1;
+            return true;
         }
-    }
 
-    bool set_num2(double num2)
-    {
-        if (num2 != 0)
+        else 
         {
-            return num2 = num2;
+            return false;
         }
-    }
+
+        bool set_num2(double number2) 
+        {
+            if (number2 != 0) {
+                num2 = number2;
+                return true;
+            }
+
+            else 
+            {
+                return false;
+            }
+        }
 };
 
 int main()
