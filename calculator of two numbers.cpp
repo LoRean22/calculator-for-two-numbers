@@ -1,127 +1,121 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
-class Calculator
+class Calculator 
 {
 private:
-    double num1;
-    double num2;
+	double num1;
+	double num2;
 
 public:
-    double add(double num1, double num2)
+	double add() 
+{
+		double result = num1 + num2;
+
+		return result;
+	}
+	double multiply() 
+{
+		double result = num1 * num2;
+
+		return result;
+	}
+	double subtract_1_2() 
+{
+		double result = num1 - num2;
+
+		return result;
+	}
+	double subtract_2_1() 
+{
+		double result = num2 - num1;
+
+		return result;
+	}
+	double divide_1_2() 
+{
+		double result = num1 / num2;
+
+		return result;
+	}
+	double divide_2_1() 
+{
+		double result = num2 / num1;
+
+		return result;
+	}
+	bool set_num1(double number1) {
+		if (number1 != 0) 
     {
-        return num1 + num2;
-    }
-
-    double multiply(double num1, double num2)
+			num1 = number1;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	bool set_num2(double number2) 
+  {
+		if (number2 != 0) 
     {
-        return num1 * num2;
-    }
-
-    double subtract_1_2(double num1, double num2)
-    {
-        return num1 - num2;
-    }
-
-    double subtract_2_1(double num1, double num2)
-    {
-        return num2 - num1;
-    }
-
-    double divide_1_2(double num1, double num2)
-    {
-        return num1 / num2;
-    }
-
-    double divide_2_1(double num1, double num2)
-    {
-        return num2 / num1;
-    }
-
-    bool set_num1(double number1) 
-    {
-        if (number1 != 0) {
-            num1 = number1;
-            return true;
-        }
-
-        else 
-        {
-            return false;
-        }
-
-        bool set_num2(double number2) 
-        {
-            if (number2 != 0) {
-                num2 = number2;
-                //либо this->num2=num2;
-                return true;
-            }
-
-            else 
-            {
-                return false;
-            }
-        }
+			num2 = number2;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 };
 
-int main()
+int main() 
 {
-    setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Russian");
 
+	Calculator calc;
+	double num1;
+	double num2;
 
-    int num1;
-    int num2;
+	while (true) 
+  {
+		do {
+			cout << "Введите num1: ";
+			cin >> num1;
+			if(calc.set_num1(num1)) 
+      {
+				break;
+			}
+			else 
+      {
+				cout << "Неверный ввод!" << endl;
+			}
+		} while (true);
 
-
-    do
+		do 
     {
-        cout << "Введите num1: ";
-        cin >> num1;
+			cout << "Введите num2: ";
+			cin >> num2;
+			if(calc.set_num2(num2)) {
+				break;
+			}
+			else 
+      {
+				cout << "Неверный ввод!" << endl;
+			}
+		} while (true);
 
-        if (num1 == 0)
-        {
-            cout << "Неверный ввод(Повторите '0' если хотите выйти из программы)!" << "\n" <<
-                "Введите num1: ";
-            cin >> num1;
+		cout << "num1 + num2 = " << calc.add() << endl;
 
-            if (num1 == 0)
-            {
-                cout << "Работа завершена!" << "\n";
-                return 1;
-            }
-        }
+		cout << "num1 - num2 = " << calc.subtract_1_2() << endl;
 
-        cout << "Введите num2: ";
-        cin >> num2;
+		cout << "num2 - num1 = " << calc.subtract_2_1() << endl;
 
-        if (num2 == 0)
-        {
-            cout << "Неверный ввод(Повторите '0' если хотите выйти из программы)!" << "\n" <<
-                "Введите num2: ";
-            cin >> num2;
+		cout << "num1 * num2 = " << calc.multiply() << endl;
 
-            if (num2 == 0)
-            {
-                cout << "Работа завершена!" << "\n";
-                return 2;
-            }
-        }
+		cout << "num1 / num2 = " << calc.divide_1_2() << endl;
 
-        Calculator method_1;
+		cout << "num2 / num1 = " << calc.divide_2_1() << endl;
+	}
 
-        method_1.set_num1(num1);
-        method_1.set_num2(num2);
-
-        cout << "num1 + num2 = " << method_1.add(num1, num2) << "\n";
-
-        cout << "num1 - num2 = " << method_1.subtract_1_2(num1, num2) << "\n";
-        cout << "num2 - num1 = " << method_1.subtract_2_1(num1, num2) << "\n";
-
-        cout << "num1 * num2 = " << method_1.multiply(num1, num2) << "\n";
-
-        cout << "num1 / num2 = " << method_1.divide_1_2(num1, num2) << "\n";
-        cout << "num2 / num1 = " << method_1.divide_2_1(num1, num2) << "\n";
-    } while (num1);
+	return 0;
 }
